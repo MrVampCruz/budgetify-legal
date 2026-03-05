@@ -1,0 +1,636 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Privacy Policy — Budgetify</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:        #F5F5F8;
+      --surface:   #FFFFFF;
+      --border:    #E2E2EE;
+      --accent:    #6C63FF;
+      --accent-s:  #EEF0FF;
+      --text:      #0F0E1A;
+      --body:      #3C3C52;
+      --muted:     #858599;
+      --income:    #22C55E;
+      --expense:   #EF4444;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--bg);
+      color: var(--body);
+      line-height: 1.7;
+      min-height: 100vh;
+    }
+
+    /* ── Header ── */
+    header {
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      padding: 0 24px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      backdrop-filter: blur(12px);
+    }
+
+    .header-inner {
+      max-width: 760px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 64px;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+    }
+
+    .logo-icon {
+      width: 36px;
+      height: 36px;
+      background: var(--accent);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+    }
+
+    .logo-name {
+      font-family: 'DM Serif Display', serif;
+      font-size: 20px;
+      color: var(--text);
+      letter-spacing: -0.3px;
+    }
+
+    .header-badge {
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--muted);
+      background: var(--bg);
+      border: 1px solid var(--border);
+      padding: 4px 12px;
+      border-radius: 20px;
+    }
+
+    /* ── Hero ── */
+    .hero {
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      padding: 64px 24px 48px;
+    }
+
+    .hero-inner {
+      max-width: 760px;
+      margin: 0 auto;
+    }
+
+    .hero-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 1.2px;
+      text-transform: uppercase;
+      color: var(--accent);
+      background: var(--accent-s);
+      padding: 5px 12px;
+      border-radius: 20px;
+      margin-bottom: 20px;
+    }
+
+    .hero h1 {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(36px, 6vw, 52px);
+      color: var(--text);
+      line-height: 1.15;
+      letter-spacing: -1px;
+      margin-bottom: 16px;
+    }
+
+    .hero h1 em {
+      font-style: italic;
+      color: var(--accent);
+    }
+
+    .hero-meta {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      flex-wrap: wrap;
+      margin-top: 24px;
+    }
+
+    .meta-item {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    .meta-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--income);
+    }
+
+    /* ── Layout ── */
+    .container {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 48px 24px 80px;
+    }
+
+    /* ── TOC ── */
+    .toc {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 24px 28px;
+      margin-bottom: 48px;
+    }
+
+    .toc-title {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 14px;
+    }
+
+    .toc ol {
+      list-style: none;
+      counter-reset: toc;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 6px 24px;
+    }
+
+    @media (max-width: 520px) {
+      .toc ol { grid-template-columns: 1fr; }
+    }
+
+    .toc li {
+      counter-increment: toc;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .toc li::before {
+      content: counter(toc, decimal-leading-zero);
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--accent);
+      min-width: 22px;
+    }
+
+    .toc a {
+      font-size: 13px;
+      color: var(--body);
+      text-decoration: none;
+      transition: color 0.15s;
+    }
+
+    .toc a:hover { color: var(--accent); }
+
+    /* ── Sections ── */
+    .section {
+      margin-bottom: 48px;
+      animation: fadeUp 0.4s ease both;
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(16px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .section-number {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 1.2px;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 6px;
+    }
+
+    .section h2 {
+      font-family: 'DM Serif Display', serif;
+      font-size: 26px;
+      color: var(--text);
+      letter-spacing: -0.4px;
+      margin-bottom: 16px;
+      line-height: 1.2;
+    }
+
+    .section p {
+      font-size: 15px;
+      line-height: 1.75;
+      color: var(--body);
+      margin-bottom: 14px;
+    }
+
+    .section p:last-child { margin-bottom: 0; }
+
+    /* ── Cards ── */
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 20px 24px;
+      margin-bottom: 12px;
+    }
+
+    .card-title {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 6px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .card-icon {
+      font-size: 16px;
+    }
+
+    .card p {
+      font-size: 13.5px;
+      color: var(--muted);
+      margin: 0;
+      line-height: 1.6;
+    }
+
+    /* ── Highlight box ── */
+    .highlight {
+      background: var(--accent-s);
+      border-left: 3px solid var(--accent);
+      border-radius: 0 12px 12px 0;
+      padding: 16px 20px;
+      margin: 20px 0;
+    }
+
+    .highlight p {
+      font-size: 14px;
+      color: var(--text);
+      font-weight: 500;
+      margin: 0;
+    }
+
+    /* ── Warning box ── */
+    .warning {
+      background: #FEF3C7;
+      border-left: 3px solid #F59E0B;
+      border-radius: 0 12px 12px 0;
+      padding: 16px 20px;
+      margin: 20px 0;
+    }
+
+    .warning p {
+      font-size: 14px;
+      color: #92400E;
+      font-weight: 500;
+      margin: 0;
+    }
+
+    /* ── List ── */
+    .policy-list {
+      list-style: none;
+      margin: 14px 0;
+    }
+
+    .policy-list li {
+      font-size: 14.5px;
+      color: var(--body);
+      padding: 8px 0 8px 24px;
+      position: relative;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .policy-list li:last-child { border-bottom: none; }
+
+    .policy-list li::before {
+      content: '→';
+      position: absolute;
+      left: 0;
+      color: var(--accent);
+      font-size: 13px;
+    }
+
+    /* ── Divider ── */
+    .divider {
+      height: 1px;
+      background: var(--border);
+      margin: 48px 0;
+    }
+
+    /* ── Contact card ── */
+    .contact-card {
+      background: var(--text);
+      border-radius: 20px;
+      padding: 36px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+
+    .contact-card h3 {
+      font-family: 'DM Serif Display', serif;
+      font-size: 24px;
+      color: #fff;
+      margin-bottom: 6px;
+    }
+
+    .contact-card p {
+      font-size: 14px;
+      color: rgba(255,255,255,0.55);
+      margin: 0;
+    }
+
+    .contact-btn {
+      background: var(--accent);
+      color: #fff;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 600;
+      padding: 12px 24px;
+      border-radius: 12px;
+      white-space: nowrap;
+      transition: opacity 0.15s;
+    }
+
+    .contact-btn:hover { opacity: 0.85; }
+
+    /* ── Footer ── */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 28px 24px;
+      text-align: center;
+    }
+
+    footer p {
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    footer a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <div class="header-inner">
+      <a href="#" class="logo">
+        <div class="logo-icon">💰</div>
+        <span class="logo-name">Budgetify</span>
+      </a>
+      <span class="header-badge">Privacy Policy</span>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <div class="hero">
+    <div class="hero-inner">
+      <div class="hero-tag">
+        <span>🔒</span> Legal Document
+      </div>
+      <h1>Your privacy is<br /><em>our priority.</em></h1>
+      <p style="font-size:16px; color:var(--muted); max-width:520px;">
+        Budgetify is built on a simple principle — your financial data belongs to you and only you. This policy explains exactly how we handle it.
+      </p>
+      <div class="hero-meta">
+        <div class="meta-item">
+          <div class="meta-dot"></div>
+          Effective: March 5, 2026
+        </div>
+        <div class="meta-item">
+          <div class="meta-dot" style="background:var(--accent)"></div>
+          Last updated: March 5, 2026
+        </div>
+        <div class="meta-item">
+          <div class="meta-dot" style="background:var(--expense)"></div>
+          App: Budgetify v1.0
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main content -->
+  <div class="container">
+
+    <!-- Table of Contents -->
+    <div class="toc">
+      <div class="toc-title">Table of Contents</div>
+      <ol>
+        <li><a href="#s1">Information We Collect</a></li>
+        <li><a href="#s2">How We Use Your Data</a></li>
+        <li><a href="#s3">Data Storage</a></li>
+        <li><a href="#s4">Google Services</a></li>
+        <li><a href="#s5">Advertising</a></li>
+        <li><a href="#s6">In-App Purchases</a></li>
+        <li><a href="#s7">Children's Privacy</a></li>
+        <li><a href="#s8">Your Rights</a></li>
+        <li><a href="#s9">Changes to Policy</a></li>
+        <li><a href="#s10">Contact Us</a></li>
+      </ol>
+    </div>
+
+    <!-- 1. Information We Collect -->
+    <div class="section" id="s1">
+      <div class="section-number">01 — Information</div>
+      <h2>Information We Collect</h2>
+      <p>Budgetify is designed as a <strong>local-first, offline application</strong>. The vast majority of data you enter never leaves your device.</p>
+
+      <div class="card">
+        <div class="card-title"><span class="card-icon">📱</span> Data You Provide</div>
+        <p>Wallet names, transaction details, categories, labels, and any financial data you enter. This is stored exclusively on your device in a local SQLite database.</p>
+      </div>
+      <div class="card">
+        <div class="card-title"><span class="card-icon">🔑</span> Google Account (Optional)</div>
+        <p>If you choose to sign in with Google, we access your Google account ID and name solely to enable Google Drive backup and to identify your subscription with RevenueCat.</p>
+      </div>
+      <div class="card">
+        <div class="card-title"><span class="card-icon">📊</span> Usage & Diagnostics</div>
+        <p>Anonymous crash reports and performance data may be collected by third-party SDKs (RevenueCat, Google AdMob) to help us improve app stability. This data is never personally identifiable.</p>
+      </div>
+
+      <div class="highlight">
+        <p>🛡️ We do not collect your name, email, phone number, or any personally identifiable information unless you voluntarily provide it within the app profile settings.</p>
+      </div>
+    </div>
+
+    <!-- 2. How We Use Your Data -->
+    <div class="section" id="s2">
+      <div class="section-number">02 — Usage</div>
+      <h2>How We Use Your Data</h2>
+      <p>We use your data only to provide and improve the Budgetify experience. Specifically:</p>
+      <ul class="policy-list">
+        <li>To display your wallets, transactions, and financial summaries within the app</li>
+        <li>To calculate balances, budgets, and reports accurately</li>
+        <li>To back up and restore your database via Google Drive (if enabled)</li>
+        <li>To manage your subscription status via RevenueCat</li>
+        <li>To serve relevant ads via Google AdMob (free tier only)</li>
+        <li>To process recurring transactions and send local reminders</li>
+      </ul>
+      <p>We do <strong>not</strong> sell, rent, or share your personal or financial data with any third party for marketing purposes.</p>
+    </div>
+
+    <!-- 3. Data Storage -->
+    <div class="section" id="s3">
+      <div class="section-number">03 — Storage</div>
+      <h2>Data Storage &amp; Security</h2>
+      <p>All financial data entered into Budgetify is stored <strong>locally on your device</strong> using SQLite. This data does not transit our servers — we have no backend database storing your transactions.</p>
+
+      <div class="card">
+        <div class="card-title"><span class="card-icon">💾</span> Local Storage</div>
+        <p>Your SQLite database lives in your device's private app storage. It is not accessible to other apps and is removed when you uninstall Budgetify.</p>
+      </div>
+      <div class="card">
+        <div class="card-title"><span class="card-icon">☁️</span> Google Drive Backup (Optional)</div>
+        <p>If you enable Google Drive backup, your database file is uploaded to the <strong>hidden app folder</strong> of your personal Google Drive. This folder is invisible to you and other apps — only Budgetify can read it. Google's own privacy policy governs this storage.</p>
+      </div>
+
+      <div class="warning">
+        <p>⚠️ We strongly recommend enabling Google Drive backup to prevent data loss from device failure or app uninstall.</p>
+      </div>
+    </div>
+
+    <!-- 4. Google Services -->
+    <div class="section" id="s4">
+      <div class="section-number">04 — Google</div>
+      <h2>Google Services</h2>
+      <p>Budgetify integrates with the following Google services, each governed by <a href="https://policies.google.com/privacy" target="_blank" rel="noopener" style="color:var(--accent)">Google's Privacy Policy</a>:</p>
+
+      <div class="card">
+        <div class="card-title"><span class="card-icon">🔐</span> Google Sign-In</div>
+        <p>Used for authentication when enabling Google Drive backup. We only request the minimum permissions needed: your account ID, display name, and Drive app folder access.</p>
+      </div>
+      <div class="card">
+        <div class="card-title"><span class="card-icon">📁</span> Google Drive API</div>
+        <p>Used exclusively to read and write your database backup file to the hidden app-specific folder. We never access any other files in your Drive.</p>
+      </div>
+      <div class="card">
+        <div class="card-title"><span class="card-icon">📢</span> Google AdMob</div>
+        <p>Used to display advertisements on the free tier. AdMob may collect device identifiers and usage data to serve personalized ads. See Section 5 for more details.</p>
+      </div>
+    </div>
+
+    <!-- 5. Advertising -->
+    <div class="section" id="s5">
+      <div class="section-number">05 — Advertising</div>
+      <h2>Advertising</h2>
+      <p>Free tier users may see banner advertisements powered by <strong>Google AdMob</strong>. These ads help us keep the app free for everyone.</p>
+      <ul class="policy-list">
+        <li>AdMob may use your device's advertising ID to serve relevant ads</li>
+        <li>You may see a consent prompt depending on your region (GDPR / US state laws)</li>
+        <li>You can opt out of personalized ads via your device's ad settings</li>
+        <li>Ads are <strong>completely removed</strong> for Pro, Lifetime, and Ad-Free subscribers</li>
+      </ul>
+      <p>Budgetify does not directly share any personal or financial data with advertisers. AdMob's data collection is governed by <a href="https://policies.google.com/technologies/ads" target="_blank" rel="noopener" style="color:var(--accent)">Google's Advertising Policy</a>.</p>
+    </div>
+
+    <!-- 6. In-App Purchases -->
+    <div class="section" id="s6">
+      <div class="section-number">06 — Purchases</div>
+      <h2>In-App Purchases &amp; Subscriptions</h2>
+      <p>Budgetify offers optional paid plans (Pro Monthly, Pro Yearly, Lifetime, Ad-Free) processed through the <strong>Google Play Store</strong> and managed by <strong>RevenueCat</strong>.</p>
+
+      <div class="card">
+        <div class="card-title"><span class="card-icon">💳</span> Payment Processing</div>
+        <p>All payment transactions are handled entirely by Google Play. We never receive or store your payment card information.</p>
+      </div>
+      <div class="card">
+        <div class="card-title"><span class="card-icon">🔄</span> RevenueCat</div>
+        <p>We use RevenueCat to track subscription status and entitlements. RevenueCat may store your Google account ID as a subscriber identifier. Their privacy policy is available at <a href="https://www.revenuecat.com/privacy" target="_blank" rel="noopener" style="color:var(--accent)">revenuecat.com/privacy</a>.</p>
+      </div>
+    </div>
+
+    <!-- 7. Children -->
+    <div class="section" id="s7">
+      <div class="section-number">07 — Children</div>
+      <h2>Children's Privacy</h2>
+      <p>Budgetify is not directed at children under the age of 13. We do not knowingly collect personal information from children under 13. If you believe a child has provided us with personal information, please contact us immediately and we will take steps to delete such information.</p>
+    </div>
+
+    <!-- 8. Your Rights -->
+    <div class="section" id="s8">
+      <div class="section-number">08 — Your Rights</div>
+      <h2>Your Rights</h2>
+      <p>Since your data lives on your device, you have full control at all times:</p>
+      <ul class="policy-list">
+        <li><strong>Access</strong> — All your data is directly visible within the app</li>
+        <li><strong>Export</strong> — Use Google Drive backup to export your database file</li>
+        <li><strong>Delete</strong> — Use Settings → Reset App to permanently wipe all local data</li>
+        <li><strong>Portability</strong> — Your backup file is a standard SQLite database you can open with any SQLite tool</li>
+        <li><strong>Google Data</strong> — Revoke Budgetify's Google Drive access anytime via your Google Account settings</li>
+      </ul>
+
+      <div class="highlight">
+        <p>🇪🇺 If you are in the European Economic Area (EEA), you have additional rights under GDPR including the right to erasure and data portability. Contact us to exercise these rights.</p>
+      </div>
+    </div>
+
+    <!-- 9. Changes -->
+    <div class="section" id="s9">
+      <div class="section-number">09 — Updates</div>
+      <h2>Changes to This Policy</h2>
+      <p>We may update this Privacy Policy from time to time. When we do, we will update the "Last updated" date at the top of this page and, where appropriate, notify you through the app.</p>
+      <p>Continued use of Budgetify after any changes constitutes your acceptance of the new policy. We encourage you to review this page periodically.</p>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- 10. Contact -->
+    <div class="section" id="s10">
+      <div class="section-number">10 — Contact</div>
+      <h2>Contact Us</h2>
+      <p>If you have any questions about this Privacy Policy or how your data is handled, please reach out:</p>
+
+      <div class="contact-card">
+        <div>
+          <h3>Get in touch</h3>
+          <p>We typically respond within 48 hours.</p>
+        </div>
+        <a href="mailto:privacy@budgetify.app" class="contact-btn">privacy@budgetify.app</a>
+      </div>
+
+      <p style="margin-top: 20px; font-size:13px; color:var(--muted);">
+        Developer: MrVampCruz &nbsp;·&nbsp; Location: Mauritius &nbsp;·&nbsp; App: Budgetify for Android
+      </p>
+    </div>
+
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <p>© 2026 Budgetify by <a href="#">MrVampCruz</a>. All rights reserved. &nbsp;·&nbsp; Built with ♥ in Mauritius.</p>
+  </footer>
+
+</body>
+</html>
