@@ -1,0 +1,781 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Terms of Service — Budgetify</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:        #F5F5F8;
+      --surface:   #FFFFFF;
+      --border:    #E2E2EE;
+      --accent:    #6C63FF;
+      --accent-s:  #EEF0FF;
+      --text:      #0F0E1A;
+      --body:      #3C3C52;
+      --muted:     #858599;
+      --income:    #22C55E;
+      --expense:   #EF4444;
+      --warning:   #F59E0B;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--bg);
+      color: var(--body);
+      line-height: 1.7;
+      min-height: 100vh;
+    }
+
+    /* ── Header ── */
+    header {
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      padding: 0 24px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .header-inner {
+      max-width: 760px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 64px;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+    }
+
+    .logo-icon {
+      width: 36px;
+      height: 36px;
+      background: var(--accent);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+    }
+
+    .logo-name {
+      font-family: 'DM Serif Display', serif;
+      font-size: 20px;
+      color: var(--text);
+      letter-spacing: -0.3px;
+    }
+
+    .header-links {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .header-link {
+      font-size: 13px;
+      color: var(--muted);
+      text-decoration: none;
+      transition: color 0.15s;
+    }
+
+    .header-link:hover { color: var(--accent); }
+
+    .header-badge {
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--muted);
+      background: var(--bg);
+      border: 1px solid var(--border);
+      padding: 4px 12px;
+      border-radius: 20px;
+    }
+
+    /* ── Hero ── */
+    .hero {
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      padding: 64px 24px 48px;
+    }
+
+    .hero-inner {
+      max-width: 760px;
+      margin: 0 auto;
+    }
+
+    .hero-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 1.2px;
+      text-transform: uppercase;
+      color: var(--accent);
+      background: var(--accent-s);
+      padding: 5px 12px;
+      border-radius: 20px;
+      margin-bottom: 20px;
+    }
+
+    .hero h1 {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(36px, 6vw, 52px);
+      color: var(--text);
+      line-height: 1.15;
+      letter-spacing: -1px;
+      margin-bottom: 16px;
+    }
+
+    .hero h1 em {
+      font-style: italic;
+      color: var(--accent);
+    }
+
+    .hero-meta {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      flex-wrap: wrap;
+      margin-top: 24px;
+    }
+
+    .meta-item {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    .meta-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--income);
+    }
+
+    /* ── Layout ── */
+    .container {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 48px 24px 80px;
+    }
+
+    /* ── TOC ── */
+    .toc {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 24px 28px;
+      margin-bottom: 48px;
+    }
+
+    .toc-title {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 14px;
+    }
+
+    .toc ol {
+      list-style: none;
+      counter-reset: toc;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 6px 24px;
+    }
+
+    @media (max-width: 520px) {
+      .toc ol { grid-template-columns: 1fr; }
+    }
+
+    .toc li {
+      counter-increment: toc;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .toc li::before {
+      content: counter(toc, decimal-leading-zero);
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--accent);
+      min-width: 22px;
+    }
+
+    .toc a {
+      font-size: 13px;
+      color: var(--body);
+      text-decoration: none;
+      transition: color 0.15s;
+    }
+
+    .toc a:hover { color: var(--accent); }
+
+    /* ── Sections ── */
+    .section {
+      margin-bottom: 48px;
+      animation: fadeUp 0.4s ease both;
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(16px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .section-number {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 1.2px;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 6px;
+    }
+
+    .section h2 {
+      font-family: 'DM Serif Display', serif;
+      font-size: 26px;
+      color: var(--text);
+      letter-spacing: -0.4px;
+      margin-bottom: 16px;
+      line-height: 1.2;
+    }
+
+    .section p {
+      font-size: 15px;
+      line-height: 1.75;
+      color: var(--body);
+      margin-bottom: 14px;
+    }
+
+    .section p:last-child { margin-bottom: 0; }
+
+    /* ── Cards ── */
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 20px 24px;
+      margin-bottom: 12px;
+    }
+
+    .card-title {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 6px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .card-icon { font-size: 16px; }
+
+    .card p {
+      font-size: 13.5px;
+      color: var(--muted);
+      margin: 0;
+      line-height: 1.6;
+    }
+
+    /* ── Highlight box ── */
+    .highlight {
+      background: var(--accent-s);
+      border-left: 3px solid var(--accent);
+      border-radius: 0 12px 12px 0;
+      padding: 16px 20px;
+      margin: 20px 0;
+    }
+
+    .highlight p {
+      font-size: 14px;
+      color: var(--text);
+      font-weight: 500;
+      margin: 0;
+    }
+
+    /* ── Warning box ── */
+    .warning {
+      background: #FEF3C7;
+      border-left: 3px solid var(--warning);
+      border-radius: 0 12px 12px 0;
+      padding: 16px 20px;
+      margin: 20px 0;
+    }
+
+    .warning p {
+      font-size: 14px;
+      color: #92400E;
+      font-weight: 500;
+      margin: 0;
+    }
+
+    /* ── Danger box ── */
+    .danger {
+      background: #FEE2E2;
+      border-left: 3px solid var(--expense);
+      border-radius: 0 12px 12px 0;
+      padding: 16px 20px;
+      margin: 20px 0;
+    }
+
+    .danger p {
+      font-size: 14px;
+      color: #7F1D1D;
+      font-weight: 500;
+      margin: 0;
+    }
+
+    /* ── List ── */
+    .policy-list {
+      list-style: none;
+      margin: 14px 0;
+    }
+
+    .policy-list li {
+      font-size: 14.5px;
+      color: var(--body);
+      padding: 8px 0 8px 24px;
+      position: relative;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .policy-list li:last-child { border-bottom: none; }
+
+    .policy-list li::before {
+      content: '→';
+      position: absolute;
+      left: 0;
+      color: var(--accent);
+      font-size: 13px;
+    }
+
+    /* ── Plan table ── */
+    .plan-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 20px 0;
+      font-size: 14px;
+      background: var(--surface);
+      border-radius: 14px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+    }
+
+    .plan-table th {
+      background: var(--bg);
+      padding: 12px 16px;
+      text-align: left;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.8px;
+      text-transform: uppercase;
+      color: var(--muted);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .plan-table td {
+      padding: 12px 16px;
+      color: var(--body);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .plan-table tr:last-child td { border-bottom: none; }
+
+    .plan-table td:first-child { font-weight: 600; color: var(--text); }
+
+    .badge {
+      display: inline-block;
+      font-size: 10px;
+      font-weight: 700;
+      padding: 2px 8px;
+      border-radius: 20px;
+      letter-spacing: 0.3px;
+    }
+
+    .badge-pro   { background: var(--accent-s); color: var(--accent); }
+    .badge-free  { background: var(--bg);       color: var(--muted);  border: 1px solid var(--border); }
+    .badge-life  { background: #FEF3C7;          color: #92400E;       }
+
+    /* ── Divider ── */
+    .divider {
+      height: 1px;
+      background: var(--border);
+      margin: 48px 0;
+    }
+
+    /* ── Contact card ── */
+    .contact-card {
+      background: var(--text);
+      border-radius: 20px;
+      padding: 36px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+
+    .contact-card h3 {
+      font-family: 'DM Serif Display', serif;
+      font-size: 24px;
+      color: #fff;
+      margin-bottom: 6px;
+    }
+
+    .contact-card p {
+      font-size: 14px;
+      color: rgba(255,255,255,0.55);
+      margin: 0;
+    }
+
+    .contact-btn {
+      background: var(--accent);
+      color: #fff;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 600;
+      padding: 12px 24px;
+      border-radius: 12px;
+      white-space: nowrap;
+      transition: opacity 0.15s;
+    }
+
+    .contact-btn:hover { opacity: 0.85; }
+
+    /* ── Footer ── */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 28px 24px;
+      text-align: center;
+    }
+
+    footer p { font-size: 12px; color: var(--muted); }
+    footer a { color: var(--accent); text-decoration: none; }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <div class="header-inner">
+      <a href="#" class="logo">
+        <div class="logo-icon">💰</div>
+        <span class="logo-name">Budgetify</span>
+      </a>
+      <div class="header-links">
+        <a href="privacy-policy.html" class="header-link">Privacy Policy</a>
+        <span class="header-badge">Terms of Service</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <div class="hero">
+    <div class="hero-inner">
+      <div class="hero-tag">
+        <span>📋</span> Legal Document
+      </div>
+      <h1>Terms of<br /><em>Service.</em></h1>
+      <p style="font-size:16px; color:var(--muted); max-width:520px;">
+        By using Budgetify, you agree to these terms. Please read them carefully — they're written in plain language, not legalese.
+      </p>
+      <div class="hero-meta">
+        <div class="meta-item">
+          <div class="meta-dot"></div>
+          Effective: March 5, 2026
+        </div>
+        <div class="meta-item">
+          <div class="meta-dot" style="background:var(--accent)"></div>
+          Last updated: March 5, 2026
+        </div>
+        <div class="meta-item">
+          <div class="meta-dot" style="background:var(--expense)"></div>
+          App: Budgetify v1.0
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main content -->
+  <div class="container">
+
+    <!-- Table of Contents -->
+    <div class="toc">
+      <div class="toc-title">Table of Contents</div>
+      <ol>
+        <li><a href="#s1">Acceptance of Terms</a></li>
+        <li><a href="#s2">Description of Service</a></li>
+        <li><a href="#s3">User Accounts</a></li>
+        <li><a href="#s4">Subscriptions & Billing</a></li>
+        <li><a href="#s5">Refund Policy</a></li>
+        <li><a href="#s6">Acceptable Use</a></li>
+        <li><a href="#s7">Data & Backups</a></li>
+        <li><a href="#s8">Disclaimers</a></li>
+        <li><a href="#s9">Limitation of Liability</a></li>
+        <li><a href="#s10">Termination</a></li>
+        <li><a href="#s11">Changes to Terms</a></li>
+        <li><a href="#s12">Contact</a></li>
+      </ol>
+    </div>
+
+    <!-- 1. Acceptance -->
+    <div class="section" id="s1">
+      <div class="section-number">01 — Acceptance</div>
+      <h2>Acceptance of Terms</h2>
+      <p>By downloading, installing, or using Budgetify ("the App"), you agree to be bound by these Terms of Service ("Terms"). If you do not agree to these Terms, do not use the App.</p>
+      <p>These Terms apply to all users of the App, including free and paid subscribers. They form a legally binding agreement between you and MrVampCruz ("we", "us", "our").</p>
+      <div class="highlight">
+        <p>📱 These Terms apply to Budgetify on Android. iOS terms may follow separately when the App is published on the App Store.</p>
+      </div>
+    </div>
+
+    <!-- 2. Description -->
+    <div class="section" id="s2">
+      <div class="section-number">02 — Service</div>
+      <h2>Description of Service</h2>
+      <p>Budgetify is a personal finance management application that allows you to track wallets, transactions, budgets, and recurring payments. The App operates primarily <strong>offline and locally</strong> on your device.</p>
+
+      <div class="card">
+        <div class="card-title"><span class="card-icon">📱</span> Core Features (Free)</div>
+        <p>Basic wallet management, transaction tracking, expense categories, and local data storage — available to all users at no cost.</p>
+      </div>
+      <div class="card">
+        <div class="card-title"><span class="card-icon">👑</span> Premium Features (Pro / Lifetime)</div>
+        <p>Unlimited wallets, recurring transactions, Google Drive backup, custom categories, theme customization, ad-free experience, and all future features.</p>
+      </div>
+
+      <p>We reserve the right to modify, suspend, or discontinue any part of the App at any time with reasonable notice where possible.</p>
+    </div>
+
+    <!-- 3. Accounts -->
+    <div class="section" id="s3">
+      <div class="section-number">03 — Accounts</div>
+      <h2>User Accounts</h2>
+      <p>Budgetify does not require account registration. The App uses Google Sign-In optionally for the following purposes only:</p>
+      <ul class="policy-list">
+        <li>Enabling Google Drive backup and restore functionality</li>
+        <li>Linking your subscription to your Google account via RevenueCat</li>
+      </ul>
+      <p>You are responsible for maintaining the security of your Google account. We are not liable for any loss resulting from unauthorized access to your Google account.</p>
+      <div class="warning">
+        <p>⚠️ If you reset the App or uninstall it without an active Google Drive backup, your data will be permanently lost. We cannot recover local data.</p>
+      </div>
+    </div>
+
+    <!-- 4. Subscriptions -->
+    <div class="section" id="s4">
+      <div class="section-number">04 — Billing</div>
+      <h2>Subscriptions &amp; Billing</h2>
+      <p>Budgetify offers the following paid plans, all processed securely through the Google Play Store:</p>
+
+      <table class="plan-table">
+        <thead>
+          <tr>
+            <th>Plan</th>
+            <th>Price</th>
+            <th>Type</th>
+            <th>Tier</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Free</td>
+            <td>$0.00</td>
+            <td>Forever free</td>
+            <td><span class="badge badge-free">FREE</span></td>
+          </tr>
+          <tr>
+            <td>Ad-Free</td>
+            <td>$1.99</td>
+            <td>One-time purchase</td>
+            <td><span class="badge badge-free">ADD-ON</span></td>
+          </tr>
+          <tr>
+            <td>Pro Monthly</td>
+            <td>$2.99 / month</td>
+            <td>Auto-renewing</td>
+            <td><span class="badge badge-pro">PRO</span></td>
+          </tr>
+          <tr>
+            <td>Pro Yearly</td>
+            <td>$14.99 / year</td>
+            <td>Auto-renewing</td>
+            <td><span class="badge badge-pro">PRO</span></td>
+          </tr>
+          <tr>
+            <td>Lifetime</td>
+            <td>$49.99</td>
+            <td>One-time purchase</td>
+            <td><span class="badge badge-life">LIFETIME</span></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="card">
+        <div class="card-title"><span class="card-icon">🔄</span> Auto-Renewal</div>
+        <p>Monthly and yearly subscriptions automatically renew unless cancelled at least 24 hours before the end of the current billing period. You can manage or cancel your subscription anytime via Google Play → Subscriptions.</p>
+      </div>
+      <div class="card">
+        <div class="card-title"><span class="card-icon">💳</span> Payment</div>
+        <p>All payments are processed by Google Play. We never handle or store your payment information directly. Prices are in USD and may vary by region based on Google Play's local pricing.</p>
+      </div>
+    </div>
+
+    <!-- 5. Refunds -->
+    <div class="section" id="s5">
+      <div class="section-number">05 — Refunds</div>
+      <h2>Refund Policy</h2>
+      <p>All purchases are processed through the Google Play Store and are subject to <a href="https://support.google.com/googleplay/answer/2479637" target="_blank" rel="noopener" style="color:var(--accent)">Google Play's refund policy</a>.</p>
+      <ul class="policy-list">
+        <li>Google Play allows refunds within 48 hours of purchase for most apps</li>
+        <li>For refund requests outside this window, contact us directly and we will review case by case</li>
+        <li>Lifetime and one-time purchases are generally non-refundable after 48 hours</li>
+        <li>Subscriptions cancelled mid-period continue until the end of the paid period — no partial refunds</li>
+      </ul>
+      <p>To request a refund, go to <a href="https://play.google.com/store/account/orderhistory" target="_blank" rel="noopener" style="color:var(--accent)">Google Play Order History</a> or contact us at the email below.</p>
+    </div>
+
+    <!-- 6. Acceptable Use -->
+    <div class="section" id="s6">
+      <div class="section-number">06 — Use</div>
+      <h2>Acceptable Use</h2>
+      <p>You agree to use Budgetify only for lawful personal finance management purposes. You must not:</p>
+      <ul class="policy-list">
+        <li>Attempt to reverse-engineer, decompile, or tamper with the App</li>
+        <li>Use the App to conduct any fraudulent or illegal financial activity</li>
+        <li>Attempt to circumvent subscription checks or access Pro features without a valid subscription</li>
+        <li>Redistribute, resell, or sublicense the App or any part of it</li>
+        <li>Use the App in any way that could damage, disable, or impair its functionality</li>
+      </ul>
+      <div class="danger">
+        <p>🚫 Violation of these terms may result in immediate termination of your access to the App without refund.</p>
+      </div>
+    </div>
+
+    <!-- 7. Data -->
+    <div class="section" id="s7">
+      <div class="section-number">07 — Data</div>
+      <h2>Data &amp; Backups</h2>
+      <p>Budgetify stores all your financial data <strong>locally on your device</strong>. We do not operate servers that hold your data.</p>
+      <ul class="policy-list">
+        <li>You are solely responsible for maintaining backups of your data</li>
+        <li>We are not liable for data loss due to device failure, app uninstall, or OS updates</li>
+        <li>Google Drive backup is available to Pro and Lifetime subscribers and is highly recommended</li>
+        <li>Uninstalling the App permanently deletes all local data with no recovery option</li>
+      </ul>
+      <p>For full details on how your data is handled, please review our <a href="privacy-policy.html" style="color:var(--accent)">Privacy Policy</a>.</p>
+    </div>
+
+    <!-- 8. Disclaimers -->
+    <div class="section" id="s8">
+      <div class="section-number">08 — Disclaimers</div>
+      <h2>Disclaimers</h2>
+      <p>Budgetify is a personal finance <strong>tracking tool</strong> — it is not a financial advisory service, bank, or regulated financial institution.</p>
+
+      <div class="card">
+        <div class="card-title"><span class="card-icon">📊</span> Not Financial Advice</div>
+        <p>Nothing in the App constitutes financial, investment, tax, or legal advice. Always consult a qualified professional for financial decisions.</p>
+      </div>
+      <div class="card">
+        <div class="card-title"><span class="card-icon">💱</span> Exchange Rates</div>
+        <p>Exchange rates displayed in the App are for informational purposes only and may not reflect real-time market rates. Do not rely on them for actual currency conversions.</p>
+      </div>
+      <div class="card">
+        <div class="card-title"><span class="card-icon">⚙️</span> As-Is Service</div>
+        <p>The App is provided "as is" without warranties of any kind, express or implied. We do not guarantee the App will be error-free, uninterrupted, or meet your specific requirements.</p>
+      </div>
+    </div>
+
+    <!-- 9. Liability -->
+    <div class="section" id="s9">
+      <div class="section-number">09 — Liability</div>
+      <h2>Limitation of Liability</h2>
+      <p>To the maximum extent permitted by applicable law, MrVampCruz shall not be liable for any indirect, incidental, special, consequential, or punitive damages arising from:</p>
+      <ul class="policy-list">
+        <li>Loss of data or inability to access your financial records</li>
+        <li>Errors or inaccuracies in calculations or exchange rates</li>
+        <li>Any financial decisions made based on information in the App</li>
+        <li>Interruption or discontinuation of the App or any features</li>
+        <li>Unauthorized access to your device or Google account</li>
+      </ul>
+      <p>Our total liability to you for any claim arising from use of the App shall not exceed the amount you paid for your subscription in the three months preceding the claim.</p>
+    </div>
+
+    <!-- 10. Termination -->
+    <div class="section" id="s10">
+      <div class="section-number">10 — Termination</div>
+      <h2>Termination</h2>
+      <p>You may stop using Budgetify at any time by uninstalling the App and cancelling any active subscriptions via Google Play.</p>
+      <p>We reserve the right to terminate or suspend access to the App for users who violate these Terms, with or without notice. Upon termination:</p>
+      <ul class="policy-list">
+        <li>Your local data remains on your device until you uninstall the App</li>
+        <li>Active subscriptions will continue until the end of the paid period</li>
+        <li>Google Drive backups remain in your Drive until you manually delete them</li>
+      </ul>
+    </div>
+
+    <!-- 11. Changes -->
+    <div class="section" id="s11">
+      <div class="section-number">11 — Updates</div>
+      <h2>Changes to Terms</h2>
+      <p>We may update these Terms from time to time to reflect changes in the App, legal requirements, or our practices. When we make significant changes, we will:</p>
+      <ul class="policy-list">
+        <li>Update the "Last updated" date at the top of this page</li>
+        <li>Notify users through an in-app notice where appropriate</li>
+      </ul>
+      <p>Your continued use of Budgetify after changes are posted constitutes acceptance of the revised Terms. If you disagree with the updated Terms, you must stop using the App.</p>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- 12. Contact -->
+    <div class="section" id="s12">
+      <div class="section-number">12 — Contact</div>
+      <h2>Contact Us</h2>
+      <p>For questions about these Terms, billing issues, or refund requests, reach out to us directly:</p>
+
+      <div class="contact-card">
+        <div>
+          <h3>Questions about these Terms?</h3>
+          <p>We typically respond within 48 hours.</p>
+        </div>
+        <a href="mailto:support@budgetify.app" class="contact-btn">support@budgetify.app</a>
+      </div>
+
+      <p style="margin-top: 20px; font-size:13px; color:var(--muted);">
+        Developer: MrVampCruz &nbsp;·&nbsp; Location: Mauritius &nbsp;·&nbsp; App: Budgetify for Android
+      </p>
+    </div>
+
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <p>
+      © 2026 Budgetify by <a href="#">MrVampCruz</a>. All rights reserved.
+      &nbsp;·&nbsp;
+      <a href="privacy-policy.html">Privacy Policy</a>
+      &nbsp;·&nbsp;
+      Built with ♥ in Mauritius.
+    </p>
+  </footer>
+
+</body>
+</html>
